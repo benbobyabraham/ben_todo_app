@@ -25,7 +25,7 @@ SECRET_KEY = '70!n-mq$o$+m%5ubvb)9o&mh9d*@ownpolqfuadvxvwi8w!_3)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bentodoapp.herokuapp.com']
 
 
 # Application definition
