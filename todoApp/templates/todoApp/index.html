@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ToDo App</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'todoApp/css/flatly.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'todoApp/css/styles.css' %} />
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+
+
+	</head>
+	<body>
+
+		<div class="container-fluid" id="wrapper">
+
+			<div class="row">
+				<div class="col-lg-4 col-lg-offset-4" id="content">
+					<h2>Your Todo List <i class="fas fa-pencil-alt"></i>
+
+</h2>
+
+					<form action="{% url 'add' %}" method="POST" role="form">
+						{% csrf_token %}
+						<div class="form-group">
+							<div class="input-group">
+							  {{ form.desc }}
+							  <span class="input-group-btn">
+								  <button type="submit" class="btn btn-success" id="add-btn">Do it <i class="fas fa-check-circle"></i>
+
+</button>
+							  </span>
+							</div>
+						</div>
+					</form>
+
+					<div class="row t10">
+						<div class="col-lg-12">
+							<div class="btn-toolbar">
+<div>
+								<a href="{% url 'delete' %}">
+									<button type="button" class="btn btn-danger btn-block">
+										<i class="fas fa-trash-alt"></i> DELETE COMPLETED
+									</button>
+								</a>
+								<br>
+</div>
+							</div>
+						</div>
+					</div>
+
+					<ul class="list-group t20">
+						{% for item in mytodo %}
+							{% if item.done %}
+								<a href="{% url 'undone' item.id %}"><li style="color:green;" class="list-group-item todo-completed">{{ item.desc }} : Done</li></a>
+							{% else %}
+								<a href="{% url 'done' item.id %}"><li style="color:red;" class="list-group-item">{{ item.desc }} : Pending</li></a>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+
+		</div>
+
+	</body>
+</html>
