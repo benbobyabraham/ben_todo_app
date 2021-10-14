@@ -1,4 +1,4 @@
-#!/Users/musubimanagement/sreejeet/todoSite/env/bin/python3.9
+#!/Users/musubimanagement/todo/todoSite/env/bin/python3.9
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
